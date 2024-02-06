@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import styles from "./Accordion.module.css";
 import AccordionItem from "../accordionItem/AccordionItem";
 
-function Accordion({ questions }) {
+const Accordion = ({ questions }) => {
     const [openedItemId, setOpenedItemId] = useState(null);
 
-    function handleOpened(id) {
-        setOpenedItemId(id === openedItemId ? null : id);
-    }
+    const handleOpenedItem = useCallback((id) => {
+        setOpenedItemId(prevId => prevId === id ? null : id);
+    }, []);
 
     return (
         <div>
@@ -19,7 +19,7 @@ function Accordion({ questions }) {
                             key={question.id}
                             {...question}
                             isOpened={openedItemId === question.id}
-                            setOpenedItem={handleOpened}
+                            setOpenedItem={handleOpenedItem}
                         />)
                 }
             </div>
