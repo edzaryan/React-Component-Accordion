@@ -4,9 +4,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDown} from "@fortawesome/free-solid-svg-icons";
 
 const AccordionItem = React.memo(({ id, title, content, isOpened, setOpenedItem }) => {
-
-    console.log(id + " component");
-
     const contentRef = useRef(null);
     const [contentHeight, setContentHeight] = useState(0);
 
